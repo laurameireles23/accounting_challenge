@@ -1,3 +1,5 @@
+inherit_from: .rubocop_todo.yml
+
 Style/Documentation:
   Exclude:
     - 'spec/**/*'
@@ -15,3 +17,7 @@ Layout/LineLength:
   Exclude:
     - 'Gemfile'
     - 'Rakefile'
+
+Layout/EndOfLine:
+  Exclude:
+    - 'db/migrate/'
