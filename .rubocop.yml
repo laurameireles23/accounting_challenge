@@ -21,3 +21,15 @@ Layout/LineLength:
 Layout/EndOfLine:
   Exclude:
     - 'db/migrate/'
+
+    
+AllCops:
+  Includes:
+    - Rakefile
+    - config.ru
+  Excludes:
+    - db/**
+    - config/**
+    - script/**
+  Documentation:
+    Enabled: false
