@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Article < ApplicationRecord
+class Account < ApplicationRecord
   validates :name, presence: true
   validates :balance, presence: true
 end
