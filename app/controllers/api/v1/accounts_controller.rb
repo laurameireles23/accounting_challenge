@@ -7,18 +7,36 @@ module Api::V1
         account.number = generate_id if account_params[:number].nil?
         account.save!
 
-        render json: account, status: :ok
+        render json: {
+          data: account, 
+        }, status: :ok
       rescue ActiveRecord::RecordInvalid
         render json: {
           errors: account.errors,
-          message: "Falha ao criar a conta. Tente novamente!" 
-        },
-        status: :unprocessable_entity
+          message: "Falha ao criar a conta. Tente novamente!"
+        }, status: :unprocessable_entity
       rescue StandardError
         render json: {
           message: "Falha ao criar a conta. Tente novamente!"
-        },
-        status: :internal_server_error
+        }, status: :internal_server_error
+      end
+    end
+
+    def show
+      begin
+        account = Account.find_by!(number: account_params[:number])
+        balance = account.balance / 100
+
+        render json: {
+          message: "O saldo da conta #{account.number} é de R$#{balance}.", 
+          data:account
+        }, status: :ok
+
+      rescue ActiveRecord::RecordNotFound => errors
+        render json: {
+          errors: errors,
+          message: "A conta informada não existe."
+        }, status: :not_found
       end
     end
   end
