@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Account < ApplicationRecord
-  validates :name, presence: true
-  validates :balance, presence: true
+  validates :number, :name, :balance, :token, presence: true
+
+  validates_uniqueness_of :number
 end
