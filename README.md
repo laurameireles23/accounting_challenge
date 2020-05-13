@@ -7,22 +7,15 @@ Esta aplicação é o resultado de um teste enviado pela empresa Iugu, onde deve
 
 Para este projeto funcionar, os seguintes pré requisitos devem ser atendidos:
 
-```
 - Ter instalado o Ruby (versão utilizada: 2.3.3);
 - Ter instalado o Rails (versão utilizada: 5.1.7);
 - Ter instalado o MySql;
 - Ter instalado o bundle;
-```
+
 
 ### Instalando
 
-Para instalar este projeto basta seguir os seguintes passos:
-
-```
-- Clonar este projeto;
-```
-
-Após clonar, basta rodar os comandos abaixo:
+Para instalar, após clonar, basta rodar os comandos abaixo:
 
 ```
 $ bundle
@@ -50,13 +43,13 @@ Este projeto visa três principais funcionalidades. São elas:
   Entrada: id da conta: opcional, nome da conta, saldo inicial
   ```
     
-  Fluxo principal:
+  **Fluxo principal:**
 
   - Cliente envia informações da conta;
   - O sistema valida todos os dados;
   - O sistema responde com as informações da conta criada e um token de autenticação;
   
-  Fluxo excepcional determinado: id da conta já existe.
+  **Fluxo excepcional determinado: id da conta já existe.**
 
   Retornar que o id já foi utilizado  
   
@@ -64,9 +57,10 @@ Este projeto visa três principais funcionalidades. São elas:
   Saída: id da conta, token
   ```
   
-  Fluxo excepcional encontrado: id da conta não foi informado
+  **Fluxo excepcional encontrado: id da conta não foi informado**
   
   Quando o número da conta não for informado pelo cliente, a mesma é gerada para ele, facilitando assim sua vida :)
+  
 
   ## 2 - Transferir dinheiro
   ```
@@ -74,14 +68,14 @@ Este projeto visa três principais funcionalidades. São elas:
   ```
   **OBS: Para ter acesso a essa função, o cliente já deve possuir uma conta criada,  utilizar seu token informado anteriormente na criação.** 
 
-  Fluxo principal:
+  **Fluxo principal:**
 
   - O cliente faz uma requisição com os dados descritos acima;
   - O sistema valida todos os dados;
   - O sistema computa um débito na conta de origem;
   - O sistema computa um crédito na conta de destino.
   
-  Fluxo excepcional: a conta de origem não possui saldo suficiente
+  **Fluxo excepcional: a conta de origem não possui saldo suficiente**
 
   O sistema cancela a transferência e exibe uma mensagem.
   
@@ -102,12 +96,12 @@ Esta coluna foi criada para manter um armazenamento de todas as transações fei
   
    **OBS: Para ter acesso a essa função, o cliente já deve possuir uma conta criada,  utilizar seu token informado anteriormente na criação.** 
 
-  Fluxo principal:
+  **Fluxo principal:**
 
   - O cliente faz uma requisição com os dados descritos acima;
   - O sistema calcula o saldo atual da conta baseado no histórico de transferências da conta.
   
-  Fluxo excepcional: Conta inexistente
+  **Fluxo excepcional: Conta inexistente**
 
   O sistema responde que a conta informada não existe.
 
@@ -116,7 +110,7 @@ Esta coluna foi criada para manter um armazenamento de todas as transações fei
 Visando a qualidade, este projeto conta com um total de 18 testes. Todos presentes na pasta spec e divididos entre models e requests. 
 Para executa-los basta o comando:
 ```
-bundle exec rspec spec/
+$ bundle exec rspec spec/
 ```
 
 ## Construído com
