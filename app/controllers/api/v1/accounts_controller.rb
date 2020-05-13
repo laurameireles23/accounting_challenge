@@ -1,5 +1,7 @@
 module Api::V1
   class AccountsController < ApplicationController 
+    before_action :authenticate, except: %i[ create ]
+
     def create
       begin
         account = Account.new(account_params)
@@ -52,6 +54,12 @@ module Api::V1
     
     def account_params
       params.permit(:name, :number, :balance, :token)
+    end
+
+    def authenticate
+      authenticate_with_http_token do |token, options|
+        Account.find_by!(token: token).present?
+      end
     end
   end
 end
