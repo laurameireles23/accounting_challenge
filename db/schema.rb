@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20200512225611) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "transaction", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "transactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "source_account_id"
     t.integer "destination_account_id"
     t.integer "amount"
