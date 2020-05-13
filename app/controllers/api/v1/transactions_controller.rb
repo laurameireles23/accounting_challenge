@@ -27,7 +27,7 @@ module Api::V1
       render_json(message, status_render)
     rescue ActiveRecord::RecordInvalid
       render json: {
-        message: 'Falha ao criar a transação. Tente novamente!'
+        message: 'A conta informada não existe.'
       }, status: :unprocessable_entity
     end
 
