@@ -7,7 +7,9 @@ module Api::V1
     def create
       transaction = Transaction.create!(transaction_params)
       source_account = Account.find_by!(number: transaction[:source_account_id])
-      destination_account = Account.find_by!(number: transaction[:destination_account_id])
+      destination_account = Account.find_by!(
+        number: transaction[:destination_account_id]
+      )
       amount = transaction.amount
 
       if source_account.balance < amount
@@ -17,7 +19,7 @@ module Api::V1
         source(source_account, amount)
         destination(destination_account, amount)
         transaction.update!(not_approved: false)
-  
+
         message = 'Transação realizada com sucesso!'
         status_render = :ok
       end

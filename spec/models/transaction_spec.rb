@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Transaction do
@@ -8,7 +10,7 @@ describe Transaction do
 
         expect(transaction).to be_valid
       end
-    
+
       it 'is not valid without a source_account_id' do
         transaction = build(:transaction, source_account_id: nil)
 

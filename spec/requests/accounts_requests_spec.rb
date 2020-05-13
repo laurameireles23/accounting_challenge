@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'POST /api/v1/accounts' do
@@ -6,7 +8,7 @@ describe 'POST /api/v1/accounts' do
       params = {
         number: 1234,
         name: 'John Due',
-        balance: 150000
+        balance: 150_000
       }
 
       post '/api/v1/accounts', params: params
@@ -18,7 +20,7 @@ describe 'POST /api/v1/accounts' do
       params = {
         number: nil,
         name: 'John Due',
-        balance: 150000
+        balance: 150_000
       }
 
       post '/api/v1/accounts', params: params
@@ -32,7 +34,7 @@ describe 'POST /api/v1/accounts' do
       params = {
         number: 1234,
         name: nil,
-        balance: 150000
+        balance: 150_000
       }
 
       post '/api/v1/accounts', params: params
@@ -46,10 +48,10 @@ describe 'GET /api/v1/accounts/:id' do
   context 'when the correct parameters are passed' do
     it 'returns ok from token' do
       account = create(:account)
-    
-      get "/api/v1/accounts/#{account.number}", 
-        headers: { 'HTTP_AUTHORIZATION' => account.token }
-    
+
+      get "/api/v1/accounts/#{account.number}",
+          headers: { 'HTTP_AUTHORIZATION' => account.token }
+
       expect(response).to have_http_status(:ok)
     end
   end
@@ -58,7 +60,7 @@ describe 'GET /api/v1/accounts/:id' do
     it 'returns 404 (not found)' do
       create(:account, number: 1234)
 
-      get "/api/v1/accounts/5678"
+      get '/api/v1/accounts/5678'
 
       expect(response).to have_http_status(:not_found)
     end

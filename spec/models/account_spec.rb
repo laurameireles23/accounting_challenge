@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Account do
   context 'new account' do
-    describe 'when a new account is created' do 
+    describe 'when a new account is created' do
       it 'successfully' do
         account = create(:account)
 
@@ -19,7 +21,7 @@ describe Account do
 
         expect(account).to be_valid
       end
-    
+
       it 'is not valid without a name' do
         account = build(:account, name: nil)
 

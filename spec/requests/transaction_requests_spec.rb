@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'POST /api/v1/transactions' do
@@ -9,13 +11,13 @@ describe 'POST /api/v1/transactions' do
       params = {
         source_account_id: first_account.number,
         destination_account_id: second_account.number,
-        amount: 50000,
+        amount: 50_000,
         not_approved: true
       }
 
-      post '/api/v1/transactions', 
-        headers: { 'HTTP_AUTHORIZATION' => first_account.token },
-        params: params
+      post '/api/v1/transactions',
+           headers: { 'HTTP_AUTHORIZATION' => first_account.token },
+           params: params
 
       expect(response).to have_http_status(:ok)
       transaction = Transaction.last
@@ -32,12 +34,12 @@ describe 'POST /api/v1/transactions' do
       params = {
         source_account_id: nil,
         destination_account_id: second_account.number,
-        amount: 50000
+        amount: 50_000
       }
 
       post '/api/v1/transactions',
-      headers: { 'HTTP_AUTHORIZATION' => second_account.token },
-      params: params
+           headers: { 'HTTP_AUTHORIZATION' => second_account.token },
+           params: params
 
       expect(response).to have_http_status(:unprocessable_entity)
     end
@@ -49,13 +51,13 @@ describe 'POST /api/v1/transactions' do
       params = {
         source_account_id: first_account.number,
         destination_account_id: second_account.number,
-        amount: 160000,
+        amount: 160_000,
         not_approved: true
       }
 
       post '/api/v1/transactions',
-      headers: { 'HTTP_AUTHORIZATION' => first_account.token },
-      params: params
+           headers: { 'HTTP_AUTHORIZATION' => first_account.token },
+           params: params
 
       transaction = Transaction.last
 
