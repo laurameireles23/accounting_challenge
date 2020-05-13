@@ -44,11 +44,12 @@ end
 
 describe 'GET /api/v1/accounts/:id' do
   context 'when the correct parameters are passed' do
-    it 'returns 200 (ok status)' do
+    it 'returns ok from token' do
       account = create(:account)
-
-      get "/api/v1/accounts/#{account.number}"
-
+    
+      get "/api/v1/accounts/#{account.number}", 
+        headers: { 'HTTP_AUTHORIZATION' => account.token }
+    
       expect(response).to have_http_status(:ok)
     end
   end
