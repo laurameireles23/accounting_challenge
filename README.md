@@ -117,7 +117,7 @@ $ bundle exec rspec spec/
 
 Foram utilizadas as gems:
 * Rails - Utilizado para acelerar o desenvolvimento, pois promove muitas facilidades no desenvolvimento;
-* Capybara - Uitilizado para a criação dos testes, pois é uma ótima ferramenta para utilizar em testes, automação, entre outras utilidades. Com ele é possível testar as aplicações simulando as ações que os usuários reais executariam.
+* Rspec-rails - Uitilizado para a criação dos testes, pois é uma ótima ferramenta para utilizar em testes, automação, entre outras utilidades. Com ele é possível testar as aplicações simulando as ações que os usuários reais executariam.
 * Rubocop - Usado para a padronização de codigo.
 * FactoryBot - Utilizado para facilitar os testes, além de deixar semanticamente mais limpos.
 * MySql - Para utilizar o banco de dados MySql.
