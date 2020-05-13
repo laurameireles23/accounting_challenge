@@ -39,19 +39,19 @@ module Api::V1
         }, status: :not_found
       end
     end
+    
+    private
+    
+    def generate_token
+      SecureRandom.hex(10)
+    end
+    
+    def generate_id
+      SecureRandom.random_number(9999)
+    end
+    
+    def account_params
+      params.permit(:name, :number, :balance, :token)
+    end
   end
-end
-
-private
-
-def generate_token
-  SecureRandom.hex(10)
-end
-
-def generate_id
-  SecureRandom.random_number(9999)
-end
-
-def account_params
-  params.permit(:name, :number, :balance, :token)
 end
